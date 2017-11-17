@@ -51,8 +51,6 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :annotatex, Annotatex.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
   database: "annotatex_dev",
   hostname: "localhost",
   pool_size: 10
