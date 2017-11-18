@@ -1,14 +1,17 @@
-defmodule AnnotatexWeb.LinkControllerTest do
+defmodule LinkControllerTest do
   use AnnotatexWeb.ConnCase
 
-  alias Annotatex.AnnotatexWeb
+  alias Annotatex
+  alias Annotatex.Link
 
   @create_attrs %{commentary: "some commentary", external_url: "some external_url", tags: "some tags", title: "some title"}
   @update_attrs %{commentary: "some updated commentary", external_url: "some updated external_url", tags: "some updated tags", title: "some updated title"}
   @invalid_attrs %{commentary: nil, external_url: nil, tags: nil, title: nil}
 
   def fixture(:link) do
-    {:ok, link} = AnnotatexWeb.create_link(@create_attrs)
+    changeset = Link.changeset(%Link{}, @create_attrs)
+    {:ok, link} = Annotatex.Repo.insert(changeset)
+
     link
   end
 

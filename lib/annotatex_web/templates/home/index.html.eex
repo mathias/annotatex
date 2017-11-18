@@ -1,0 +1,15 @@
+
+<div class="links-list">
+<%= for link <- @links do %>
+  <div>
+    <h1>
+      <a href="<%= link.external_url %>">
+        <%= link.title %>
+      </a>
+      <span class="timestamp"><time><%= link.inserted_at %></time></span>
+    </h1>
+    <div><%= link.commentary %></div>
+    <div><%= link.tags %></div>
+    <div><%= link "Permalink", to: link_path(@conn, :show, link) %></div>
+  </div>
+<% end %>

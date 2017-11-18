@@ -1,7 +1,7 @@
-defmodule Annotatex.AnnotatexWeb.Link do
+defmodule Annotatex.Link do
   use Ecto.Schema
   import Ecto.Changeset
-  alias Annotatex.AnnotatexWeb.Link
+  alias Annotatex.Link
 
 
   schema "links" do

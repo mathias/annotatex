@@ -20,7 +20,7 @@ defmodule Annotatex.Mixfile do
   def application do
     [
       mod: {Annotatex.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :guardian]
     ]
   end
 
@@ -41,9 +41,9 @@ defmodule Annotatex.Mixfile do
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
-      {:comeonin, "~> 4.0"},
       {:bcrypt_elixir, "~> 1.0"},
-      {:guardian, "~> 0.14"}
+      {:guardian, "~> 0.14.5"},
+      {:guardian_db, "~> 0.8.0"}
     ]
   end
 

@@ -9,21 +9,41 @@ defmodule AnnotatexWeb.Router do
     plug :put_secure_browser_headers
   end
 
+  pipeline :maybe_browser_auth do
+    plug(Guardian.Plug.VerifySession)
+    plug(Guardian.Plug.VerifyHeader, realm: "Bearer")
+    plug(Guardian.Plug.LoadResource)
+  end
+
+  pipeline :ensure_authed_access do
+    plug(Guardian.Plug.EnsureAuthenticated, %{"typ" => "access", error_handler: Annotatex.HttpErrorHandler})
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
 
   scope "/", AnnotatexWeb do
-    pipe_through :browser # Use the default browser stack
+    pipe_through([:browser, :maybe_browser_auth])
 
-    get "/", PageController, :index
+    get "/", HomeController, :index
     get "/about", PageController, :about
 
     resources "/links", LinkController
+
+    #get("/login", LoginController, :new)
+    #post("/login", LoginController, :create)
+    #delete("/login", LoginController, :delete)
   end
+
+  #scope "/admin", AnnotatexWeb do
+    #pipe_through([:browser, :maybe_browser_auth, :ensure_authed_access])
+
+    #resources "/links", LinkController
+  #end
 
   # Other scopes may use custom stacks.
   # scope "/api", AnnotatexWeb do
-  #   pipe_through :api
-  # end
+    #   pipe_through :api
+    # end
 end

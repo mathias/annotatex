@@ -22,6 +22,21 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+config :guardian, Guardian,
+  allowed_algos: ["HS512"], # optional
+  verify_module: Guardian.JWT,  # optional
+  issuer: "Annotatex",
+  ttl: { 30, :days },
+  verify_issuer: true, # optional
+  secret_key: Mix.env(),
+  serializer: Sentinel.GuardianSerializer,
+  hooks: GuardianDb # optional if using guardiandb
+
+config :guardian_db, GuardianDb,
+  repo: Annotatex.Repo,
+  schema_name: "guardian_tokens", # default
+  sweep_interval: 60 # default: 60 minutes
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"
