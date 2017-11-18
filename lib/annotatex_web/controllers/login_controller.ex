@@ -9,7 +9,8 @@ defmodule AnnotatexWeb.LoginController do
   end
 
   def create(conn, params) do
-    case User.find_and_confirm_password(params) do
+    #case User.find_and_confirm_password(params) do
+    case {:error, {}} do
       {:ok, user} ->
         conn
         |> Guardian.Plug.sign_in(user, :access)
