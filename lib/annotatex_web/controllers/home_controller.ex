@@ -5,7 +5,6 @@ defmodule AnnotatexWeb.HomeController do
   alias Annotatex.Link
 
   def index(conn, _params) do
-    links = Repo.all(Link)
-    render(conn, "index.html", links: links)
+    render conn, "index.html"
   end
 end

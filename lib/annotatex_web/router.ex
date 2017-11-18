@@ -29,8 +29,6 @@ defmodule AnnotatexWeb.Router do
     get "/", HomeController, :index
     get "/about", PageController, :about
 
-    resources "/links", LinkController
-
     #get("/login", LoginController, :new)
     #post("/login", LoginController, :create)
     #delete("/login", LoginController, :delete)
@@ -38,8 +36,6 @@ defmodule AnnotatexWeb.Router do
 
   #scope "/admin", AnnotatexWeb do
     #pipe_through([:browser, :maybe_browser_auth, :ensure_authed_access])
-
-    #resources "/links", LinkController
   #end
 
   # Other scopes may use custom stacks.
