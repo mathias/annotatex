@@ -1,1 +1,3 @@
+<a href="<%= page_path(@conn, :index) %>">Home</a>
+
 More info here.
