@@ -18,6 +18,8 @@ defmodule AnnotatexWeb.Router do
 
     get "/", PageController, :index
     get "/about", PageController, :about
+
+    resources "/links", LinkController
   end
 
   # Other scopes may use custom stacks.
