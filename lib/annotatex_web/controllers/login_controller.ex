@@ -14,7 +14,7 @@ defmodule AnnotatexWeb.LoginController do
       {:ok, user} ->
         conn
         |> Guardian.Plug.sign_in(user, :access)
-        |> redirect(to: "/admin/links")
+        |> redirect(to: "/")
 
       {:error, changeset} ->
         render conn, "login.html", changeset: changeset

@@ -1,7 +1,9 @@
-defmodule Annotatex.Post do
+defmodule Annotatex.Posts.Post do
   use Ecto.Schema
   import Ecto.Changeset
-  alias Annotatex.Post
+  alias Annotatex.Posts.Post
+  alias Annotatex.Taggings.Tagging
+  alias Annotatex.Accounts.User
 
   @params ~w(title slug body external_url user_id)a
   @required_params ~w(title slug body, user)a

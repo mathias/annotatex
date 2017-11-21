@@ -1,5 +1,5 @@
 <h2>Login</h2>
 
-<%= render "form.html", Map.put(assigns, :action, link_path(@conn, :create)) %>
+<%= render "form.html" %>
 
-<span><%= link "Back", to: link_path(@conn, :index) %></span>
+<span><%= link "Back", to: page_path(@conn, :index) %></span>

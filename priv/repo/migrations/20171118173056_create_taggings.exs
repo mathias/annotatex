@@ -3,10 +3,10 @@ defmodule Annotatex.Repo.Migrations.CreateTaggings do
 
   def change do
     create table(:taggings) do
-      add :tag_id, references(:tags, on_delete: :delete_all)
-      add :post_id, references(:posts, on_delete: :delete_all)
-
+      add :tag_id, references(:tags, on_delete: :delete_all), null: false
+      add :post_id, references(:posts, on_delete: :delete_all), null: false
     end
+
     create index(:taggings, [:tag_id])
     create index(:taggings, [:post_id])
     create unique_index(:taggings, [:tag_id, :post_id])

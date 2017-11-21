@@ -2,7 +2,7 @@ defmodule Annotatex.GuardianSerializer do
   @behaviour Guardian.Serializer
 
   alias Annotatex.Repo
-  alias Annotatex.User
+  alias Annotatex.Accounts.User
 
   def for_token(user = %User{}), do: {:ok, "User:#{user.id}"}
   def for_token(_), do: {:error, "Unknown resource type"}
