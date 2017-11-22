@@ -3,6 +3,8 @@ defmodule Annotatex.Taggings.Tag do
   import Ecto.Changeset
   alias Annotatex.Taggings.Tag
 
+  @primary_key {:id, :binary_id, autogenerate: true}
+
   schema "tags" do
     field :name
     field :taggings_count

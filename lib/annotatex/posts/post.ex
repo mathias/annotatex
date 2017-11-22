@@ -10,6 +10,8 @@ defmodule Annotatex.Posts.Post do
   def permitted_params, do: @params
   def required_params,  do: @required_params
 
+  @primary_key {:id, :binary_id, autogenerate: true}
+
   schema "posts" do
     field :title, :string
     field :slug, :string

@@ -4,6 +4,8 @@ defmodule Annotatex.Taggings.Tagging do
   alias Annotatex.Taggings.{Tagging, Tag}
   alias Annotatex.Posts.Post
 
+  @primary_key {:id, :binary_id, autogenerate: true}
+
   schema "taggings" do
     belongs_to :tag, Tag
     belongs_to :post, Post
