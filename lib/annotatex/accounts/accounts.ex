@@ -55,4 +55,21 @@ defmodule Annotatex.Accounts do
     User
     |> Repo.get!(id)
   end
+
+  @doc """
+  Finds a user by email.
+
+  ## Examples
+
+      iex> get_user_by_email!(email)
+      {:ok, %User{}}
+
+      iex> get_user_by_email!(bad_value)
+      {:error, {}}
+
+  """
+  def get_user_by_email!(email) do
+    Repo.get_by(User, email: email)
+  end
+
 end

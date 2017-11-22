@@ -3,6 +3,9 @@ defmodule Annotatex.Accounts.User do
   import Ecto.Changeset
   alias Annotatex.Accounts.User
 
+  @primary_key {:id, Ecto.UUID, autogenerate: true}
+  @foreign_key_type Ecto.UUID
+
   schema "users" do
     field :email, :string
     field :name, :string
@@ -15,6 +18,5 @@ defmodule Annotatex.Accounts.User do
     user
     |> cast(attrs, [:name, :email])
     |> validate_required([:name, :email])
-    |> validate_format(:email, ~r/@/)
   end
 end
