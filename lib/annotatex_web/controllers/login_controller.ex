@@ -1,7 +1,6 @@
 defmodule AnnotatexWeb.LoginController do
   use AnnotatexWeb, :controller
 
-  #alias Annotatex.Repo
   alias Annotatex.User
 
   def new(conn, params) do

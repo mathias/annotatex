@@ -17,7 +17,8 @@ defmodule Annotatex.Posts do
 
   """
   def list_posts do
-    Repo.all(Post)
+    Post
+    |> Repo.all
   end
 
   @doc """
@@ -36,5 +37,22 @@ defmodule Annotatex.Posts do
     %Post{}
     |> Post.changeset(attrs)
     |> Repo.insert()
+  end
+
+  @doc """
+  Finds a post by uuid.
+
+  ## Examples
+
+      iex> get_post!(id)
+      {:ok, %Post{}}
+
+      iex> get_post!(bad_value)
+      {:error, {}}
+
+  """
+  def get_post!(id) do
+    User
+    |> Repo.get!(id)
   end
 end

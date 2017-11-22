@@ -6,7 +6,7 @@ defmodule Annotatex.Posts.Post do
   alias Annotatex.Accounts.User
 
   @params ~w(title slug body external_url user_id)a
-  @required_params ~w(title slug body, user)a
+  @required_params ~w(title slug body user_id)a
   def permitted_params, do: @params
   def required_params,  do: @required_params
 
@@ -18,7 +18,7 @@ defmodule Annotatex.Posts.Post do
     field :body, :string
     field :external_url, :string
 
-    belongs_to :tagging, Tagging
+    has_many :taggings, Tagging
     belongs_to :user, User
 
     timestamps()
