@@ -17,8 +17,9 @@ defmodule Annotatex.Posts do
 
   """
   def list_posts do
-    Post
-    |> Repo.all
+    query = from Post, order_by: [desc: :created_at]
+
+    Repo.all(query)
   end
 
   @doc """
