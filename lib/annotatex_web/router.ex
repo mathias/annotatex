@@ -26,8 +26,10 @@ defmodule AnnotatexWeb.Router do
   scope "/", AnnotatexWeb do
     pipe_through([:browser, :maybe_browser_auth])
 
-    get "/", PageController, :index
+    get "/", PostController, :index
     get "/about", PageController, :about
+
+    get "/post/:id", PostController, :show
 
     #get("/login", LoginController, :new)
     #post("/login", LoginController, :create)

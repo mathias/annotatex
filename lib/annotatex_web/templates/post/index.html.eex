@@ -1,0 +1,17 @@
+<a href="<%= page_path(@conn, :about) %>">About</a>
+
+<section class="posts-list">
+<%= for post <- @posts do %>
+  <article>
+    <h2>
+      <a href="<%= post.external_url %>">
+        <%= post.title %>
+      </a>
+      <span class="timestamp"><time><%= post.inserted_at %></time></span>
+    </h2>
+    <div><%= post.body %></div>
+    <div><%#<%= post.tags %>%></div>
+    <div><%= link "Permalink", to: post_path(@conn, :show, post) %></div>
+  </article>
+<% end %>
+</section>

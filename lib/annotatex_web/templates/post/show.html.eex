@@ -1,0 +1,12 @@
+<section class="post">
+  <article>
+    <h2>
+      <a href="<%= @post.external_url %>">
+        <%= @post.title %>
+      </a>
+      <span class="timestamp"><time><%= @post.inserted_at %></time></span>
+    </h2>
+    <div><%= @post.body %></div>
+    <div><%#<%= post.tags %>%></div>
+  </article>
+</section>
