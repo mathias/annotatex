@@ -17,9 +17,10 @@ defmodule Annotatex.Posts do
 
   """
   def list_posts do
-    query = from Post, order_by: [desc: :created_at]
+    query = from Post, order_by: [desc: :inserted_at]
 
     Repo.all(query)
+    |> Repo.preload(:user)
   end
 
   @doc """
@@ -53,7 +54,8 @@ defmodule Annotatex.Posts do
 
   """
   def get_post!(id) do
-    User
+    Post
     |> Repo.get!(id)
+    |> Repo.preload(:user)
   end
 end
