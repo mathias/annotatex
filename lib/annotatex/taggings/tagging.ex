@@ -1,7 +1,7 @@
 defmodule Annotatex.Taggings.Tagging do
   use Ecto.Schema
   import Ecto.Changeset
-  alias Annotatex.Taggings.{Tagging,Tag}
+  alias Annotatex.Taggings.{Tagging, Tag}
   alias Annotatex.Posts.Post
 
   schema "taggings" do
