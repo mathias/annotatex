@@ -1,0 +1,3 @@
+<%= for tagging <- @taggings do %>
+  <%= tagging.tag.name %> 
+<% end %>
