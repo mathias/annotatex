@@ -17,10 +17,9 @@ defmodule Annotatex.Posts do
 
   """
   def list_posts do
-    query = from Post, order_by: [desc: :inserted_at]
+    query = from Post, order_by: [desc: :published_at], preload: [:taggings, :user]
 
     Repo.all(query)
-    |> Repo.preload(:user)
   end
 
   @doc """
@@ -28,10 +27,10 @@ defmodule Annotatex.Posts do
 
   ## Examples
 
-      iex> create_post(%{field: value})
+      iex> create_post(%{title: "Foo", body: "Bar"})
       {:ok, %Post{}}
 
-      iex> create_post(%{field: bad_value})
+      iex> create_post(%{foo: "baz"})
       {:error, %Ecto.Changeset{}}
 
   """
@@ -39,6 +38,12 @@ defmodule Annotatex.Posts do
     %Post{}
     |> Post.changeset(attrs)
     |> Repo.insert()
+  end
+
+  def create_post!(attrs \\ %{}) do
+    %Post{}
+    |> Post.changeset(attrs)
+    |> Repo.insert!()
   end
 
   @doc """

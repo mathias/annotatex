@@ -3,7 +3,7 @@ defmodule Annotatex.Repo.Migrations.AddPublishedAtToPosts do
 
   def change do
     alter table(:posts) do
-      add :published_at, :timestamp
+      add :published_at, :timestamptz
     end
   end
 end

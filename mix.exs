@@ -27,7 +27,7 @@ defmodule Annotatex.Mixfile do
   def application do
     [
       mod: {Annotatex.Application, []},
-      extra_applications: [:logger, :runtime_tools, :guardian]
+      extra_applications: [:logger, :runtime_tools, :guardian, :timex]
     ]
   end
 
@@ -51,6 +51,7 @@ defmodule Annotatex.Mixfile do
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:phoenix_pubsub, "~> 1.0"},
       {:postgrex, ">= 0.0.0"},
+      {:timex, "~> 3.1"},
       # dev/test:
       {:credo, "~> 0.8", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 0.5", only: [:dev], runtime: false},

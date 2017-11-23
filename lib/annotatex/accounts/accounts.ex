@@ -40,6 +40,24 @@ defmodule Annotatex.Accounts do
   end
 
   @doc """
+  Creates a user, failing if something goes wrong.
+
+  ## Examples
+
+      iex> create_user!(%{field: value})
+      {:ok, %User{}}
+
+      iex> create_user!(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_user!(attrs \\ %{}) do
+    %User{}
+    |> User.changeset(attrs)
+    |> Repo.insert!()
+  end
+
+  @doc """
   Finds a user by id.
 
   ## Examples
