@@ -17,7 +17,8 @@ defmodule Annotatex.Taggings.Tagging do
   @doc false
   def changeset(%Tagging{} = tagging, attrs) do
     tagging
-    |> cast(attrs, [:tag, :post])
-    |> validate_required([:tag, :post])
+    |> cast(attrs, [:tag_id, :post_id])
+    |> put_assoc(:tag, attrs.tag)
+    |> put_assoc(:post, attrs.post)
   end
 end

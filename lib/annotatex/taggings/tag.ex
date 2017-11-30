@@ -7,8 +7,8 @@ defmodule Annotatex.Taggings.Tag do
   @foreign_key_type Ecto.UUID
 
   schema "tags" do
-    field :name
-    field :taggings_count
+    field :name, :string
+    field :taggings_count, :integer
 
     timestamps()
   end
