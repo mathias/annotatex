@@ -23,6 +23,24 @@ defmodule Annotatex.Posts do
   end
 
   @doc """
+  Finds a post by uuid.
+
+  ## Examples
+
+      iex> get_post!(id)
+      {:ok, %Post{}}
+
+      iex> get_post!(bad_value)
+      {:error, {}}
+
+  """
+  def get_post!(id) do
+    Post
+    |> Repo.get!(id)
+    |> Repo.preload(:user)
+  end
+
+  @doc """
   Creates a post.
 
   ## Examples
@@ -47,20 +65,49 @@ defmodule Annotatex.Posts do
   end
 
   @doc """
-  Finds a post by uuid.
+  Updates a post.
 
   ## Examples
 
-      iex> get_post!(id)
+      iex> update_post(post, %{field: new_value})
       {:ok, %Post{}}
 
-      iex> get_post!(bad_value)
-      {:error, {}}
+      iex> update_post(post, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
 
   """
-  def get_post!(id) do
-    Post
-    |> Repo.get!(id)
-    |> Repo.preload(:user)
+  def update_post(%Post{} = post, attrs) do
+    post
+    |> Post.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a Post.
+
+  ## Examples
+
+      iex> delete_post(post)
+      {:ok, %Post{}}
+
+      iex> delete_post(post)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_post(%Post{} = post) do
+    Repo.delete(post)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking post changes.
+
+  ## Examples
+
+      iex> change_post(post)
+      %Ecto.Changeset{source: %Post{}}
+
+  """
+  def change_post(%Post{} = post) do
+    Post.changeset(post, %{})
   end
 end

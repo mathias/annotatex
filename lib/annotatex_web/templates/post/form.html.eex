@@ -1,0 +1,38 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= label f, :title, class: "control-label" %>
+    <%= text_input f, :title, class: "form-control" %>
+    <%= error_tag f, :title %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :external_url, class: "control-label" %>
+    <%= text_input f, :external_url, class: "form-control" %>
+    <%= error_tag f, :external_url %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :body, class: "control-label" %>
+    <%= text_input f, :body, class: "form-control" %>
+    <%= error_tag f, :body %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :published_at, class: "control-label" %>
+    <%= datetime_select f, :published_at, class: "form-control" %>
+    <%= error_tag f, :published_at %>
+  </div>
+
+  <%= hidden_input f, :user_id, value: @current_user.id %>
+
+  <div class="form-group">
+    <%= submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
