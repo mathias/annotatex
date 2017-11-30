@@ -1,3 +1,5 @@
+<ul>
 <%= for tagging <- @taggings do %>
-  #<%= tagging.tag.name %>&nbsp;
+  <li>#<%= tagging.tag.name %></li>
 <% end %>
+<ul>

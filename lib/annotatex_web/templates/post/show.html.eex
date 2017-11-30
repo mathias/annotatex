@@ -8,5 +8,6 @@
     </h2>
     <div class="post-body"><%= raw @post.body %></div>
     <div><%= render AnnotatexWeb.SharedView, "tags.html", taggings: @post.taggings %></div>
+    <div><%= link "Permalink", to: post_path(@conn, :show, @post) %></div>
   </article>
 </section>
