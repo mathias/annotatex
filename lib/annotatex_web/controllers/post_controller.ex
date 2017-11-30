@@ -3,7 +3,6 @@ defmodule AnnotatexWeb.PostController do
 
   alias Annotatex.Repo
   alias Annotatex.Posts
-  alias Annotatex.Taggings
 
   def index(conn, _params) do
     posts = Posts.list_posts |> Repo.preload(taggings: [:tag])
